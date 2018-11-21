@@ -1,0 +1,21 @@
+{
+  "name": "deliveroo-front",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^4.1.3",
+    "next": "^7.0.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "reactstrap": "^6.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "author": "Florian Bouron",
+  "license": "ISC"
+}
