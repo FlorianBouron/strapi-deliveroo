@@ -2,6 +2,7 @@ import gql from "graphql-tag";
 import { withRouter } from "next/router";
 import { graphql } from "react-apollo";
 import { compose } from "recompose";
+import { withContext } from "../components/Context";
 import {
   Button,
   Card,
@@ -12,10 +13,16 @@ import {
   Col,
   Row
 } from "reactstrap";
+import Cart from "../components/Cart";
+import defaultPage from "../hocs/defaultPage";
 
 class Restaurants extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  addItem(item) {
+    this.props.context.addItem(item);
   }
 
   render() {
@@ -49,7 +56,11 @@ class Restaurants extends React.Component {
                       <CardText>{res.description}</CardText>
                     </CardBody>
                     <div className="card-footer">
-                      <Button outline color="primary">
+                      <Button
+                        onClick={this.addItem.bind(this, res)}
+                        outline
+                        color="primary"
+                      >
                         + Add To Cart
                       </Button>
 
@@ -76,6 +87,11 @@ class Restaurants extends React.Component {
                     </div>
                   </Card>
                 ))}
+              </div>
+            </Col>
+            <Col xs="3" style={{ padding: 0 }}>
+              <div>
+                <Cart isAuthenticated={isAuthenticated} />
               </div>
             </Col>
           </Row>
@@ -106,6 +122,8 @@ const GET_RESTAURANT_DISHES = gql`
 
 export default compose(
   withRouter,
+  defaultPage,
+  withContext,
   graphql(GET_RESTAURANT_DISHES, {
     options: props => {
       return {
