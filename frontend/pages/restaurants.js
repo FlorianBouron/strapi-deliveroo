@@ -37,7 +37,7 @@ class Restaurants extends React.Component {
                 {restaurant.dishes.map(res => (
                   <Card
                     style={{ width: "30%", margin: "0 10px" }}
-                    key={res._id}
+                    key={res.id}
                   >
                     <CardImg
                       top={true}
