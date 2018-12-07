@@ -1,4 +1,6 @@
+import RestaurantList from "../components/RestaurantList";
 import React from "react";
+import defaultPage from "../hocs/defaultPage";
 import {
   Col,
   Input,
@@ -6,11 +8,11 @@ import {
   InputGroupAddon,
   Row
 } from "reactstrap";
-import RestaurantList from "../components/RestaurantList";
 
 class Index extends React.Component {
   constructor(props) {
     super(props);
+    //query state will be passed to RestaurantList for the filter query
     this.state = {
       query: ""
     };
@@ -47,4 +49,4 @@ class Index extends React.Component {
   }
 }
 
-export default Index;
+export default defaultPage(Index);
